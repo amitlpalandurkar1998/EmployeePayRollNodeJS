@@ -38,6 +38,7 @@ function calculate_EMP_Wage_OF_MONTH() {
   const WAGE_PER_HOUR = 20;
   let total_empHrs = 0;
   let total_workingDays = 0;
+  let EMP_DailyWage_Array = new Array();
 
   while (
     total_workingDays < TOTAL_WORKING_IN_MONTH &&
@@ -45,18 +46,16 @@ function calculate_EMP_Wage_OF_MONTH() {
   ) {
     let empCheck = (Math.floor(Math.random() * 10) % 3) + 1;
     total_empHrs += getWorkingHours(empCheck);
+    EMP_DailyWage_Array.push(
+      "Day " + total_workingDays+ " : " + getWorkingHours(empCheck) * WAGE_PER_HOUR
+    );
     total_workingDays++;
   }
 
-  //   for (let i = 0; i < TOTAL_WORKING_IN_MONTH; i++) {
-  //     let empCheck = (Math.floor(Math.random() * 10) % 3) + 1;
-  //     if (total_empHrs <= 160) {
-  //       total_empHrs += getWorkingHours(empCheck);
-  //     }
-  //   }
-
   let empWage = total_empHrs * WAGE_PER_HOUR;
+  EMP_DailyWage_Array.push("Total Employee Wage : " + empWage);
   console.log("Total Working Days In Month : " + total_workingDays);
   console.log("Total Hours : " + total_empHrs);
   console.log("Employee Wage : " + empWage);
+  console.log(EMP_DailyWage_Array);
 }
