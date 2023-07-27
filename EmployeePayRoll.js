@@ -1,3 +1,5 @@
+"use strict";
+
 const IS_ABSENT = 0;
 
 let empCheck = Math.floor(Math.random() * 10) % 2;
@@ -5,7 +7,7 @@ if (empCheck == IS_ABSENT) {
   console.log("Employee is Absent.");
 } else {
   console.log("Employee is Present.");
-  calculate_EMP_Wage();
+  calculate_EMP_Wage_OF_MONTH();
 }
 
 function getWorkingHours(empCheck) {
@@ -29,12 +31,18 @@ function getWorkingHours(empCheck) {
   return empHrs;
 }
 
-function calculate_EMP_Wage() {
+function calculate_EMP_Wage_OF_MONTH() {
+  const TOTAL_WORKING_IN_MONTH = 20;
   const WAGE_PER_HOUR = 20;
+  let total_empHrs = 0;
 
-  let empCheck = (Math.floor(Math.random() * 10) % 2) + 1;
-  let empHrs = getWorkingHours(empCheck);
+  for (let i = 0; i < TOTAL_WORKING_IN_MONTH; i++) {
+    let empCheck = (Math.floor(Math.random() * 10) % 2) + 1;
+    total_empHrs += getWorkingHours(empCheck);
+  }
 
-  let empWage = empHrs * WAGE_PER_HOUR;
-  console.log("Employee Wage : " + empWage);
+  let empWage = total_empHrs * WAGE_PER_HOUR;
+  console.log(
+    "Total Hours : " + total_empHrs + "  " + "Employee Wage : " + empWage
+  );
 }
